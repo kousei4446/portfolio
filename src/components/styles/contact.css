@@ -1,0 +1,129 @@
+.contact-section {
+    width: 100%;
+    background-color: #fff;
+    padding: 5rem 0;
+  }
+  
+  .contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  
+  .contact-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  
+  .contact-info p {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  
+  .contact-details {
+    margin-bottom: 2rem;
+  }
+  
+  .contact-item {
+    margin-bottom: 1rem;
+  }
+  
+  .contact-label {
+    font-weight: bold;
+    margin-right: 0.5rem;
+    color: #555;
+  }
+  
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .social-link {
+    margin-right: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .social-link::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #00ccff;
+    transition: width 0.3s ease;
+  }
+  
+  .social-link:hover {
+    color: #00ccff;
+  }
+  
+  .social-link:hover::after {
+    width: 100%;
+  }
+  
+  .contact-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #00ccff;
+  }
+  
+  .submit-btn {
+    background-color: #00ccff;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+  }
+  
+  .submit-btn:hover {
+    background-color: #00a0cc;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-container {
+      grid-template-columns: 1fr;
+    }
+  
+    .contact-info {
+      margin-bottom: 2rem;
+    }
+  }
+  
+  
