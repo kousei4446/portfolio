@@ -23,16 +23,17 @@ const internships: Internship[] = [
     duration: "2024年9月2日 ~ 9月13日",
     description:
       "Sky株式会社の「Skyスタイル部」にて社内DXに関する開発を経験。現場社員から実務の流れを学び、Web開発スキルを向上。実際の成果物を作成し、開発現場の業務内容を深く理解。",
-    skills: ["DX", "Web開発", "業務システム"],
+    skills: ["Next.js", "TypeScript", "Chakra UI", "Figma"],
   },
   {
-    role: "カレンダーアプリのバグ修正",
-    company: "株式会社ジーニー",
-    duration: "2024年10月11日 (1Day)",
+    role: "TypeScript移行・フロント改善",
+    company: "c-live株式会社",
+    duration: "2025年3月 - 現在",
     description:
-      "架空サービスのカレンダーアプリのバグ修正を担当。React+TypeScriptを使用。初めてReact FullCalendarを扱うため、公式ドキュメントを参考にしながら実装。",
-    skills: ["React", "TypeScript", "FullCalendar"],
-  },
+      "ReactプロジェクトのTypeScript移行を担当。既存コードの型付けやリファクタリングを進めつつ、コードの保守性・可読性向上に貢献。",
+    skills: ["React", "TypeScript"],
+  }
+  
 ]
 
 const TimelineItem = ({ internship }: { internship: Internship }) => (
