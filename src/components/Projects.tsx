@@ -19,8 +19,8 @@ const projectsData: Project[] = [
     image: `${work1}?height=180&width=240`,
     techStack: ["React", "Firebase"],
     links: [
-      { url: "#", label: "App Store", icon: "📱" },
-      { url: "https://github.com/kousei4446/missing-finder.git", label: "Source Code", icon: "💻" },
+      { url: "https://figare.web.app/", label: "App Store", icon: "📱" },
+      { url: "https://github.com/kousei4446/figare", label: "Source Code", icon: "💻" },
     ],
   },
   {
