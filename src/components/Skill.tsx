@@ -16,6 +16,7 @@ const skills = [
     { name: "GitHub", icon: "🔧", level: 85, category: "Tools", img: "/github.png" },
     { name: "MySQL", icon: "📊", level: 75, category: "Tools", img: "/mysql.png" },
     { name: "Firebase", icon: "🐳", level: 70, category: "Tools", img: "/firebase.png" },
+    { name: "Tensorflow", icon: "🐳", level: 70, category: "Tools", img: "/tensorflow.png" },
 ];
 
 export default function Skill() {

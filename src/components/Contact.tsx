@@ -1,6 +1,9 @@
 import { useState } from "react";
 import emailjs from "emailjs-com";
+import toast, { Toaster } from "react-hot-toast";
 import "./styles/contact.css";
+import github from "/githubicon.png"
+import twitter from "/twitter.png"
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,45 +13,51 @@ const Contact = () => {
     message: "",
   });
   const [loading, setLoading] = useState(false);
-  const [feedback, setFeedback] = useState(""); // 成功・失敗メッセージ用
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const isValidEmail = (email: string) => {
+    const regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    return regex.test(email);
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!isValidEmail(formData.email)) {
+      toast.error("有効なメールアドレスを入力してください。");
+      return;
+    }
+
     setLoading(true);
-    setFeedback("");
+
     const templateParams = {
       from_name: formData.name,
       from_email: formData.email,
       subject: formData.subject,
       message: formData.message,
     };
+
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const userId = import.meta.env.VITE_EMAILJS_USER_ID;
-    
+
     emailjs
       .send(serviceId!, templateId!, templateParams, userId)
       .then(
-        (response) => {
-          console.log("メール送信成功:", response.status, response.text);
-          setFeedback("Message sent successfully!");
+        () => {
+          toast.success("メッセージが送信されました！");
           setLoading(false);
-          // フォームリセット
-          setFormData({
-            name: "",
-            email: "",
-            subject: "",
-            message: "",
-          });
+          // フォームをリセット
+          setFormData({ name: "", email: "", subject: "", message: "" });
         },
-        (error) => {
-          console.error("メール送信エラー:", error);
-          setFeedback("Failed to send message. Please try again.");
+        () => {
+          toast.error("メッセージの送信に失敗しました。再度お試しください。");
           setLoading(false);
         }
       );
@@ -56,15 +65,16 @@ const Contact = () => {
 
   return (
     <section className="contact-section" id="contact">
+      <Toaster />
       <div className="content-column">
         <h2 className="section-title">Contact Me</h2>
         <div className="contact-container">
           <div className="contact-info">
             <h3>Get In Touch</h3>
             <p>
-              I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
+              I'm always open to discussing new projects, creative ideas or
+              opportunities to be part of your vision.
             </p>
-
             <div className="contact-details">
               <div className="contact-item">
                 <span className="contact-label">Email:</span>
@@ -75,20 +85,33 @@ const Contact = () => {
                 <span className="contact-value">Osaka, Japan</span>
               </div>
             </div>
-
-            <div className="social-links">
-              <a href="https://github.com/kousei4446" className="social-link">
-                GitHub
+            <div className="social-buttons">
+              <a
+                href="https://github.com/kousei4446"
+                className="social-button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={github} alt="Visit GitHub" />
               </a>
-              <a href="https://x.com/k8035004287922?s=11" className="social-link">
-                Twitter
+              <a
+                href="https://x.com/k8035004287922?s=11"
+                className="social-button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={twitter} alt="Follow on Twitter/X" />
               </a>
             </div>
+
           </div>
 
           <div className="contact-form">
             {loading ? (
-              <div className="loading-indicator">Sending...</div>
+              <div className="loading-indicator">
+                <div className="spinner"></div>
+                <span>送信中...</span>
+              </div>
             ) : (
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
@@ -144,7 +167,6 @@ const Contact = () => {
                 </button>
               </form>
             )}
-            {feedback && <p className="feedback">{feedback}</p>}
           </div>
         </div>
       </div>

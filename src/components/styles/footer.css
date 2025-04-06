@@ -67,4 +67,33 @@
     }
   }
   
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+  }
   
+  .social-link {
+    color: #333;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .social-link::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #00ccff;
+    transition: width 0.3s ease;
+  }
+  
+  .social-link:hover {
+    color: #00ccff;
+  }
+  
+  .social-link:hover::after {
+    width: 100%;
+  }
