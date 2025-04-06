@@ -42,7 +42,7 @@ const projectsData: Project[] = [
     title: "部のシフト管理アプリ🏫",
     period: "2024年10月 - 2025年1月",
     description:
-      "大学でのボランティア部でシフト制での活動があり、それにともなうシフト表の作成を簡単にするために作成しました。部活引退後現在は使用されていません。要件定義の際ユーザーの意見を聞くことの",
+      "大学でのボランティア部でシフト制での活動があり、それにともなうシフト表の作成を簡単にするために作成しました。部活引退後現在は使用されていません。要件定義の際ユーザーの意見を聞くことの大切さを学びました。",
     image: `${work2}?height=180&width=240`,
     techStack: ["React", "Laravel", "MySQL"],
     links: [
@@ -67,7 +67,7 @@ const projectsData: Project[] = [
     description:
       "Ruby on RailsのNokogiriを使用したスクレイピングアプリ。ユーザーはニュースのURLを入力し、関連するニュース記事を取得できる。basic認証実装しており使用できないようにしているため、アプリを試したい方は、下のフォームからその旨をお知らせください。記事ページの例：https://www3.nhk.or.jp/news/html/20240509/k10014444461000.html",
     image: `${work4}?height=180&width=240`,
-    techStack: ["Ruby on Rails", "MySQL"],
+    techStack: ["Ruby on Rails", "MySQL", "AWS"],
     links: [
       { url: "http://15.168.238.165", label: "Web App", icon: "📱" },
       { url: "https://github.com/kousei4446/scriping_app", label: "Source Code", icon: "💻" },
