@@ -1,16 +1,16 @@
-import { useState } from "react";
-import emailjs from "emailjs-com";
-import toast, { Toaster } from "react-hot-toast";
-import "./styles/contact.css";
-import github from "/githubicon.png"
-import twitter from "/twitter.png"
+import { useState } from 'react';
+import emailjs from 'emailjs-com';
+import toast, { Toaster } from 'react-hot-toast';
+import './styles/contact.css';
+import github from '/githubicon.png';
+import twitter from '/twitter.png';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
   });
   const [loading, setLoading] = useState(false);
 
@@ -20,7 +20,7 @@ const Contact = () => {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -30,7 +30,7 @@ const Contact = () => {
     e.preventDefault();
 
     if (!isValidEmail(formData.email)) {
-      toast.error("有効なメールアドレスを入力してください。");
+      toast.error('有効なメールアドレスを入力してください。');
       return;
     }
 
@@ -47,20 +47,18 @@ const Contact = () => {
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const userId = import.meta.env.VITE_EMAILJS_USER_ID;
 
-    emailjs
-      .send(serviceId!, templateId!, templateParams, userId)
-      .then(
-        () => {
-          toast.success("メッセージが送信されました！");
-          setLoading(false);
-          // フォームをリセット
-          setFormData({ name: "", email: "", subject: "", message: "" });
-        },
-        () => {
-          toast.error("メッセージの送信に失敗しました。再度お試しください。");
-          setLoading(false);
-        }
-      );
+    emailjs.send(serviceId!, templateId!, templateParams, userId).then(
+      () => {
+        toast.success('メッセージが送信されました！');
+        setLoading(false);
+        // フォームをリセット
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      },
+      () => {
+        toast.error('メッセージの送信に失敗しました。再度お試しください。');
+        setLoading(false);
+      },
+    );
   };
 
   return (
@@ -72,7 +70,7 @@ const Contact = () => {
           <div className="contact-info">
             <h3>Get In Touch</h3>
             <p>
-              I'm always open to discussing new projects, creative ideas or
+              I&apos;m always open to discussing new projects, creative ideas or
               opportunities to be part of your vision.
             </p>
             <div className="contact-details">
@@ -103,7 +101,6 @@ const Contact = () => {
                 <img src={twitter} alt="Follow on Twitter/X" />
               </a>
             </div>
-
           </div>
 
           <div className="contact-form">

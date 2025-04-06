@@ -1,138 +1,136 @@
 .contact-section {
-    width: 100%;
-    background-color: #fff;
-    padding: 5rem 0;
-  }
-  
-  .contact-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-  }
-  
-  .contact-info h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: #333;
-  }
-  
-  .contact-info p {
-    margin-bottom: 2rem;
-    line-height: 1.6;
-  }
-  
-  .contact-details {
-    margin-bottom: 2rem;
-  }
-  
-  .contact-item {
-    margin-bottom: 1rem;
-  }
-  
-  .contact-label {
-    font-weight: bold;
-    margin-right: 0.5rem;
-    color: #555;
-  }
-  .social-buttons {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: 1rem;
-  }
-  
-  .social-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    background-color: white;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    position: relative;
-  }
-  
-  .social-button:hover {
-    background-color: #00ccff;
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 6px 15px rgba(0, 204, 255, 0.3);
-  }
-  
-  .social-button img {
-    width: 40px;
-    height: 40px;
-    transition: filter 0.3s ease;
-  }
-  
-  .social-button:hover img {
-    filter: brightness(0) invert(1);
-  }
-  
-  .contact-form form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: #555;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-family: inherit;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-  }
-  
-  .form-group input:focus,
-  .form-group textarea:focus {
-    outline: none;
-    border-color: #00ccff;
-  }
-  
-  .submit-btn {
-    background-color: #00ccff;
-    color: #fff;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    align-self: flex-start;
-  }
-  
-  .submit-btn:hover {
-    background-color: #00a0cc;
-  }
-  
-  @media (max-width: 768px) {
-    .contact-container {
-      grid-template-columns: 1fr;
-    }
-  
-    .contact-info {
-      margin-bottom: 2rem;
-    }
-  }
-  
-  
+  width: 100%;
+  background-color: #fff;
+  padding: 5rem 0;
+}
 
-  /* ローディングインジケーター全体のスタイル */
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.contact-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.contact-info p {
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.contact-details {
+  margin-bottom: 2rem;
+}
+
+.contact-item {
+  margin-bottom: 1rem;
+}
+
+.contact-label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+  color: #555;
+}
+.social-buttons {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 1rem;
+}
+
+.social-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: white;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.social-button:hover {
+  background-color: #00ccff;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 204, 255, 0.3);
+}
+
+.social-button img {
+  width: 40px;
+  height: 40px;
+  transition: filter 0.3s ease;
+}
+
+.social-button:hover img {
+  filter: brightness(0) invert(1);
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #00ccff;
+}
+
+.submit-btn {
+  background-color: #00ccff;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+.submit-btn:hover {
+  background-color: #00a0cc;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info {
+    margin-bottom: 2rem;
+  }
+}
+
+/* ローディングインジケーター全体のスタイル */
 .loading-indicator {
   display: flex;
   align-items: center;
