@@ -1,4 +1,4 @@
-import "./styles/footer.css"
+import './styles/footer.css';
 const Footer = () => {
   return (
     <footer className="footer">
@@ -29,12 +29,13 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Kudou Kousei. All rights reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} Kudou Kousei. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
-
+export default Footer;
