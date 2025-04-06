@@ -16,17 +16,19 @@ function Home() {
             INNOVATIVE<br />PORTFOLIO
           </h1>
           <p className="name-title">
-            Kudou Kousei<br />Web & AI Emginner
+            Kudou Kousei
+            <br />University Student
+            <br />Web & AI Emginner
           </p>
           <a href="#contact" className="work-with-me">CONTACT ME</a>
         </div>
       </section>
-      <About/>
-      <Skills/>
-      <Projects/>
-      <Experience/>
-      <Contact/>
-      <Footer/>
+      <About />
+      <Skills />
+      <Projects />
+      <Experience />
+      <Contact />
+      <Footer />
     </div>
   );
 }
