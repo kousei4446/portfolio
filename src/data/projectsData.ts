@@ -55,7 +55,6 @@ export const projectsData: Project[] = [
     image: `${work2}?height=180&width=240`,
     techStack: ['React', 'Laravel', 'MySQL'],
     links: [
-      { url: 'http://52.197.144.4/login', label: 'Web App', icon: '📱' },
       {
         url: 'https://github.com/kousei4446/shift-app',
         label: 'Source Code',
