@@ -63,10 +63,10 @@ export const projectsData: Project[] = [
     ],
   },
   {
-    title: '犬か猫判別アプリ🐶',
+    title: '多クラス分類',
     period: '2025年3月 - 2025年4月',
     description:
-      'Djangoとニューラルネットワークをもちいて犬か猫判別するアプリを作成しました。学習サイトを参考に作りました。',
+      'DjangoとTensorflowをもちいて9クラスの判別するアプリを作成しました。学習サイトを参考に作りました。',
     image: `${work3}?height=180&width=240`,
 
     techStack: ['Django'],
@@ -98,7 +98,7 @@ export const projectsData: Project[] = [
     title: '予定管理アプリ📅',
     period: '2025年3月 - 2025年4月',
     description:
-      'chatGPTを活用した予定管理アプリ。ユーザーは自然言語で予定を入力し、アプリが自動的にカレンダーに追加。',
+      'chatGPTApiを活用した予定管理アプリ。ユーザーは自然言語で予定を入力し、アプリが自動的にカレンダーに追加。',
     image: `${work5}?height=180&width=240`,
 
     techStack: ['React Native', 'Express', 'Supabase', 'OpenAI API'],

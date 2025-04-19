@@ -15,10 +15,14 @@
     "emailjs-com": "^3.2.0",
     "firebase": "^11.6.0",
     "framer-motion": "^12.6.2",
+    "lottie-react": "^2.4.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hot-toast": "^2.5.2",
-    "react-router-dom": "^7.4.1"
+    "react-router-dom": "^7.4.1",
+    "react-tsparticles": "^2.12.2",
+    "tsparticles": "^3.8.1",
+    "tsparticles-engine": "^2.12.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",

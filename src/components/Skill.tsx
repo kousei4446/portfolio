@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { SkillCategory, skills } from '../data/skills';
 import './styles/skill.css';
-import { useState } from 'react';
+import { SkillBar } from './Skillbar';
 
 export default function Skill() {
   const [activeCategory, setActiveCategory] = useState<SkillCategory>('All');
@@ -29,7 +30,7 @@ export default function Skill() {
 
         <div className="skills-container">
           {filteredSkills.map((skill, index) => (
-            <div className="skill-item" key={index}>
+            <div className="skill-item" key={`${skill.name}-${activeCategory}`}>
               {skill.img ? (
                 <img className="skill-icon" src={skill.img} alt={skill.name} />
               ) : (
@@ -37,12 +38,7 @@ export default function Skill() {
               )}
               <div className="skill-info">
                 <h3>{skill.name}</h3>
-                <div className="skill-bar-container">
-                  <div
-                    className="skill-bar"
-                    style={{ width: `${skill.level}%` }}
-                  ></div>
-                </div>
+                <SkillBar level={skill.level} delay={index * 150} />
               </div>
             </div>
           ))}
