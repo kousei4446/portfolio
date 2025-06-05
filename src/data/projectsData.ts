@@ -4,6 +4,7 @@ import work2 from '/work2.png';
 import work3 from '/work3.png';
 import work4 from '/work4.png';
 import work5 from '/work5.png';
+import work6 from '/work6.png';
 
 export interface Project {
   title: string;
@@ -82,11 +83,10 @@ export const projectsData: Project[] = [
     title: 'ニュース要約アプリ📰',
     period: '2025年2月',
     description:
-      'Ruby on RailsのNokogiriを使用したスクレイピングアプリ。ユーザーはニュースのURLを入力し、関連するニュース記事を取得できる。basic認証実装しており使用できないようにしているため、アプリを試したい方は、下のフォームからその旨をお知らせください。記事ページの例：https://www3.nhk.or.jp/news/html/20240509/k10014444461000.html',
+      'Ruby on RailsのNokogiriを使用したスクレイピングアプリ。ユーザーはニュースのURLを入力し、関連するニュース記事を取得できる。記事ページの例：https://www3.nhk.or.jp/news/html/20240509/k10014444461000.html',
     image: `${work4}?height=180&width=240`,
     techStack: ['Ruby on Rails', 'MySQL', 'AWS'],
     links: [
-      { url: 'http://15.168.238.165', label: 'Web App', icon: '📱' },
       {
         url: 'https://github.com/kousei4446/scriping_app',
         label: 'Source Code',
@@ -111,6 +111,37 @@ export const projectsData: Project[] = [
       {
         url: 'https://github.com/Community-Production-2025-3',
         label: 'Source Code',
+        icon: '💻',
+      },
+    ],
+  },
+  {
+    title: 'プログラミングクイズアプリ💻',
+    period: '2025年5月 - 2025年6月',
+    description:
+      'Next.jsとExpressを使用したプログラミングクイズアプリ。ユーザーは問題を解きながらプログラミングのスキルを向上させることができる。また、オンラインで対戦機能も実装されており、他のユーザーと競い合うことができる。frontはVercel、backはrenderにデプロイされている。',
+    image: `${work6}?height=180&width=240`,
+
+    techStack: ['Next.js', 'Express', "docker", "PostgreSQL", "Redis", "Socket.IO"],
+    links: [
+      {
+        url: 'https://frontend-chi-neon-16.vercel.app/signIn',
+        label: 'App',
+        icon: '📱',
+      },
+      {
+        url: 'https://github.com/yumachin/frontend.git',
+        label: 'Source Code(frontend)',
+        icon: '💻',
+      },
+      {
+        url: 'https://github.com/kousei4446/backend.git',
+        label: 'Source Code(backend)',
+        icon: '💻',
+      },
+      {
+        url: 'https://github.com/yumachin/socket.io-back.git',
+        label: 'Source Code(socket-backend)',
         icon: '💻',
       },
     ],
