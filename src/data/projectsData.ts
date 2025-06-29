@@ -130,18 +130,8 @@ export const projectsData: Project[] = [
         icon: '📱',
       },
       {
-        url: 'https://github.com/yumachin/frontend.git',
+        url: 'https://github.com/orgs/tech-areana/repositories',
         label: 'Source Code(frontend)',
-        icon: '💻',
-      },
-      {
-        url: 'https://github.com/kousei4446/backend.git',
-        label: 'Source Code(backend)',
-        icon: '💻',
-      },
-      {
-        url: 'https://github.com/yumachin/socket.io-back.git',
-        label: 'Source Code(socket-backend)',
         icon: '💻',
       },
     ],
