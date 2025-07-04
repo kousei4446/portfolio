@@ -5,6 +5,7 @@ import work3 from '/work3.png';
 import work4 from '/work4.png';
 import work5 from '/work5.png';
 import work6 from '/work6.png';
+import work7 from '/work7.png';
 
 export interface Project {
   title: string;
@@ -136,4 +137,34 @@ export const projectsData: Project[] = [
       },
     ],
   },
+  {
+    title: 'シフト管理AIエージェント🤖📅(ハッカソン提出)',
+    period: '2025年6月 - 2025年7月',
+    description:
+      'バイト先のチーム開発プロジェクトとして、LINEと連携したAIシフト調整エージェントを構築。Webでのシフト管理と、AIによるLINE上での不足枠調整を両立。FirebaseとNext.jsでWeb管理画面を構築し、Vertex AIと連携したチャットエージェントにより、対話形式でシフト表を調整可能にした。',
+    image: `${work7}?height=180&width=240`,
+    techStack: [
+      'Next.js',
+      'React',
+      'Firebase',
+      'Vertex AI',
+      'Gemini API',
+      'Cloud Run',
+      'LINE Messaging API',
+      'Python',
+      'TypeScript',
+    ],
+    links: [
+      {
+        url: 'https://github.com/akitozizi818/shift-management-ai.git',
+        label: 'Source Code',
+        icon: '💻',
+      },
+      {
+        url: "https://shift-management-prod-444098581966.asia-northeast1.run.app/",
+        label: 'Web App',
+        icon: '📱',
+      }
+    ],
+  }
 ];
