@@ -36,7 +36,15 @@ export const internships: Internship[] = [
         company: 'c-live株式会社',
         duration: '2025年3月 - 現在',
         description:
-            'AI・数理モデルを用いたシフト自動編成SaaS「ほすぴタッチ」の開発・初期設定を担当。顧客ヒアリングを基にシフトルールをノーコードで設定し、フロントの開発にも携わる。大規模病院や介護施設など実利用される環境でのSaaS実務経験が積む予定です。',
+            'AI・数理モデルを用いたシフト自動編成SaaS「ほすぴタッチ」の開発・初期設定を担当。顧客ヒアリングを基にシフトルールをノーコードで設定し、フロントの開発にも携わる。大規模病院や介護施設など実利用される環境でのSaaS実務経験が積んでいます。',
         skills: ['React', 'TypeScript', 'Python', 'Git']
+    },
+    {
+        role:"生成AIを活用したYahoo!ショッピングへのサービス導入",
+        company:"LINEヤフー株式会社",
+        duration:"2025年8月 - 2025年9月(1ヶ月)",
+        description:
+            "「Yahoo!ショッピング」では現在積極的にサービス内へ生成AIを活用した機能を導入しています。生成AIを活用した「Yahoo!ショッピング」のサービス開発に参画します。OpenAIやAmazon Bedrockなどを活用し、「Yahoo!ショッピング」のユーザー体験の向上につながる施策の新規企画・開発作業に従事していく予定です。",
+            skills: ['TypeScript', 'React', 'Next.js', 'OpenAI API', 'Amazon Bedrock']
     }
 ];
