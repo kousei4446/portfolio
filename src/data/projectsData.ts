@@ -132,7 +132,7 @@ export const projectsData: Project[] = [
       },
       {
         url: 'https://github.com/orgs/tech-areana/repositories',
-        label: 'Source Code(frontend)',
+        label: 'Source Code',
         icon: '💻',
       },
     ],
@@ -164,7 +164,12 @@ export const projectsData: Project[] = [
         url: "https://shift-management-prod-444098581966.asia-northeast1.run.app/",
         label: 'Web App',
         icon: '📱',
-      }
+      },
+      {
+        url: "https://zenn.dev/akito0818/articles/3e3f4694fc1846",
+        label: 'Zenn記事',
+        icon: '📝',
+      },
     ],
   }
 ];
