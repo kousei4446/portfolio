@@ -138,8 +138,8 @@ export const projectsData: Project[] = [
     ],
   },
   {
-    title: 'シフト管理AIエージェント🤖📅(ハッカソン提出)',
-    period: '2025年6月 - 2025年7月',
+    title: 'シフト管理AIエージェント( 第2回 AI Agent Hackathon with Google Cloud 1次審査通過 )',
+    period: '2025年6月 - 2025年7月 ',
     description:
       'バイト先のチーム開発プロジェクトとして、LINEと連携したAIシフト調整エージェントを構築。Webでのシフト管理と、AIによるLINE上での不足枠調整を両立。FirebaseとNext.jsでWeb管理画面を構築し、Vertex AIと連携したチャットエージェントにより、対話形式でシフト表を調整可能にした。',
     image: `${work7}?height=180&width=240`,
