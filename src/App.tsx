@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { Github, Twitter, Mail, ExternalLink, Code, Layers, Terminal, Maximize2, X, ChevronRight, MousePointer2 } from 'lucide-react';
+import { Github, Twitter, ExternalLink, Layers, Terminal, Maximize2, X, ChevronRight, MousePointer2 } from 'lucide-react';
 
 // ==========================================
 // Types & Data
@@ -86,7 +86,6 @@ const ImmersiveScene = ({ sectionIndex, onObjectClick }: { sectionIndex: number,
   
   // Animation states
   const explosionRef = useRef(0); // 0 = no explosion, 1 = full explosion
-  const morphRef = useRef(0); // Interpolation factor between shapes
   
   useEffect(() => {
     sectionIndexRef.current = sectionIndex;
@@ -154,7 +153,6 @@ const ImmersiveScene = ({ sectionIndex, onObjectClick }: { sectionIndex: number,
     
     // Helper to generate shapes
     const getShapePositions = (type: number) => {
-      const tempGeo = new THREE.BufferGeometry();
       let threeGeo: THREE.BufferGeometry;
 
       if (type === 0) threeGeo = new THREE.IcosahedronGeometry(2, 4); // Hero
@@ -254,8 +252,6 @@ const ImmersiveScene = ({ sectionIndex, onObjectClick }: { sectionIndex: number,
       requestAnimationFrame(animate);
       
       const time = clock.getElapsedTime();
-      const delta = clock.getDelta();
-
       // Update lights colors
       const hue = (time * 0.1) % 1;
       pointLight1.color.setHSL(hue, 1, 0.5);
@@ -442,8 +438,6 @@ export default function PortfolioImmersive() {
   }, [modalData]);
 
   const t = translations[lang];
-  const currentSection = SECTIONS[activeSection];
-
   const handleObjectClick = () => {
     // Interactive feedback handled in scene
     // Optionally open relevant info
