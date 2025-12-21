@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "mysite2-38c23"
+  },
+  "targets": {
+    "mysite2-38c23": {
+      "hosting": {
+        "prod": [
+          "mysite2-38c23"
+        ],
+        "dev": [
+          "mysite2-38c23-dev"
+        ]
+      }
+    }
   }
 }

@@ -81,11 +81,21 @@ const ImmersiveScene = ({ sectionIndex, onObjectClick }: { sectionIndex: number,
   const particlesRef = useRef<THREE.Points | null>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
   const targetRotationRef = useRef({ x: 0, y: 0 });
+  const sectionIndexRef = useRef(sectionIndex);
+  const onObjectClickRef = useRef(onObjectClick);
   
   // Animation states
   const explosionRef = useRef(0); // 0 = no explosion, 1 = full explosion
   const morphRef = useRef(0); // Interpolation factor between shapes
   
+  useEffect(() => {
+    sectionIndexRef.current = sectionIndex;
+  }, [sectionIndex]);
+
+  useEffect(() => {
+    onObjectClickRef.current = onObjectClick;
+  }, [onObjectClick]);
+
   useEffect(() => {
     if (!mountRef.current) return;
 
@@ -223,7 +233,7 @@ const ImmersiveScene = ({ sectionIndex, onObjectClick }: { sectionIndex: number,
 
     const handleClick = () => {
       explosionRef.current = 1.0; // Trigger explosion
-      onObjectClick(); // Callback to React
+      onObjectClickRef.current(); // Callback to React
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -274,7 +284,7 @@ const ImmersiveScene = ({ sectionIndex, onObjectClick }: { sectionIndex: number,
 
       // --- Morphing Logic ---
       // We interpolate current positions towards the target shape (based on sectionIndex)
-      const targetShape = shapes[sectionIndex];
+      const targetShape = shapes[sectionIndexRef.current];
       const positionsAttr = particles.geometry.attributes.position;
       const currentPos = positionsAttr.array as Float32Array;
 
@@ -317,7 +327,7 @@ const ImmersiveScene = ({ sectionIndex, onObjectClick }: { sectionIndex: number,
 
       // Camera drift based on section
       // sectionIndex affects camera Z slightly to zoom in/out
-      const targetZ = 6 - (sectionIndex % 2); 
+      const targetZ = 6 - (sectionIndexRef.current % 2); 
       camera.position.z += (targetZ - camera.position.z) * 0.05;
 
       renderer.render(scene, camera);
@@ -345,7 +355,7 @@ const ImmersiveScene = ({ sectionIndex, onObjectClick }: { sectionIndex: number,
       material.dispose();
       renderer.dispose();
     };
-  }, [sectionIndex, onObjectClick]); // Re-bind if these change
+  }, []);
 
   return (
     <div ref={mountRef} className="absolute inset-0 z-0 cursor-pointer" title="Click to interact" />
