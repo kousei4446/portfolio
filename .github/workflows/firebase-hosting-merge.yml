@@ -18,7 +18,6 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MYSITE2_38C23 }}
           channelId: live
-          target: prod
           projectId: mysite2-38c23
   build_and_deploy_preview:
     if: ${{ github.ref != 'refs/heads/main' }}
@@ -31,5 +30,4 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MYSITE2_38C23 }}
           channelId: ${{ github.ref_name }}
-          target: prod
           projectId: mysite2-38c23
