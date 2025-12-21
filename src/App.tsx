@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { Github, Twitter, ExternalLink, Layers, Terminal, Maximize2, X, ChevronRight, MousePointer2 } from 'lucide-react';
 
@@ -13,58 +13,92 @@ const SECTIONS: Section[] = ['hero', 'about', 'projects', 'contact'];
 
 const translations = {
   en: {
-    role: 'Creative Developer',
+    role: 'University Student / Web & AI Emginner',
     explore: 'Explore',
     details: 'View Details',
     close: 'Close',
-    contact: 'Contact',
+    contact: 'Contact Me',
     about: {
-      title: 'About',
-      desc: 'I craft digital dimensions. Blending WebGL with React to create immersive web experiences.',
+      title: 'About Me',
+      desc: 'こんにちは！私は関西の大学に通う28卒の学生です。趣味はサウナ、バスケットボール、カラオケ、スノーボードです。大学ではWebアプリ開発に興味を持ち、特にReactを中心に学んできました。他にもLaravelやDjangoを扱った経験があり、バックエンド開発にも関心があります。優れたアプリケーションは見た目だけでなく、スムーズな操作性と実用性を兼ね備えているべきだと考えています。研究室では知能情報研究室に所属しており、主にAIのニューラルネットワークについて学んでいます。最近はTransformerに関する論文を読み、その理解を深めています。技術の進化に追いつきながら、より多くの分野に触れていくことを大切にしています。将来的には、AIの分野に積極的に関わっていきたいと考えています。新しい技術や挑戦に対して常にオープンな姿勢で取り組んでいますので、興味を持っていただけたらぜひお声がけください！',
     },
     projects: {
-      title: 'Works',
-      desc: 'Interactive experiments and production applications.',
+      title: 'Selected Projects',
+      desc: 'Selected Projects',
     }
   },
   ja: {
-    role: 'クリエイティブデベロッパー',
+    role: 'University Student / Web & AI Emginner',
     explore: '探索する',
     details: '詳細を見る',
     close: '閉じる',
     contact: 'コンタクト',
     about: {
-      title: '私について',
-      desc: 'デジタルの次元を創造します。WebGLとReactを融合させ、没入感のあるWeb体験を構築しています。',
+      title: 'About Me',
+      desc: 'こんにちは！私は関西の大学に通う28卒の学生です。趣味はサウナ、バスケットボール、カラオケ、スノーボードです。大学ではWebアプリ開発に興味を持ち、特にReactを中心に学んできました。他にもLaravelやDjangoを扱った経験があり、バックエンド開発にも関心があります。優れたアプリケーションは見た目だけでなく、スムーズな操作性と実用性を兼ね備えているべきだと考えています。研究室では知能情報研究室に所属しており、主にAIのニューラルネットワークについて学んでいます。最近はTransformerに関する論文を読み、その理解を深めています。技術の進化に追いつきながら、より多くの分野に触れていくことを大切にしています。将来的には、AIの分野に積極的に関わっていきたいと考えています。新しい技術や挑戦に対して常にオープンな姿勢で取り組んでいますので、興味を持っていただけたらぜひお声がけください！',
     },
     projects: {
-      title: '制作実績',
-      desc: 'インタラクティブな実験とプロダクションアプリケーション。',
+      title: 'Selected Projects',
+      desc: 'Selected Projects',
     }
   }
 };
-
 const projectsData = [
   {
     id: 1,
-    title: 'Cyber Dashboard',
-    category: 'Data Visualization',
-    tech: ['React', 'D3.js', 'WebGL'],
-    desc: 'Real-time cybersecurity threat monitoring dashboard with 3D globe visualization.'
+    title: '英単語学習アプリ',
+    category: '2022年3月',
+    tech: ['React'],
+    desc: '大学2年のころ英語の勉強していたとき英単語を毎日持ち歩くのが大変だなと思い開発しました。はじめてのアプリ開発でした。'
   },
   {
     id: 2,
-    title: 'Neon Configurator',
-    category: 'E-Commerce',
-    tech: ['Three.js', 'Vue', 'Gsap'],
-    desc: 'Automotive customizer allowing users to modify parts and materials in real-time.'
+    title: '迷子・落とし物検索アプリ',
+    category: '2024年6月 - 2024年7月',
+    tech: ['React', 'Firebase'],
+    desc: '大学の実践系授業で開発した防災支援Webアプリ。日常では落とし物探しに活用し、災害時には迷子やペット捜索を支援。'
   },
   {
     id: 3,
-    title: 'Void Social',
-    category: 'Social Platform',
-    tech: ['Next.js', 'Firebase'],
-    desc: 'Minimalist social network focusing on ephemeral content sharing.'
+    title: '部のシフト管理アプリ',
+    category: '2024年10月 - 2025年1月',
+    tech: ['React', 'Laravel', 'MySQL'],
+    desc: '大学でのボランティア部でシフト制での活動があり、それにともなうシフト表の作成を簡単にするために作成しました。部活引退後現在は使用されていません。要件定義の際ユーザーの意見を聞くことの大切さを学びました。awsでデプロイしていたがRDSの費用が高くなってしまい、EC2インスタンスを削除しました。'
+  },
+  {
+    id: 4,
+    title: '多クラス分類',
+    category: '2025年3月 - 2025年4月',
+    tech: ['Django'],
+    desc: 'DjangoとTensorflowをもちいて9クラスの判別するアプリを作成しました。学習サイトを参考に作りました。'
+  },
+  {
+    id: 5,
+    title: 'ニュース要約アプリ',
+    category: '2025年2月',
+    tech: ['Ruby on Rails', 'MySQL', 'AWS'],
+    desc: 'Ruby on RailsのNokogiriを使用したスクレイピングアプリ。ユーザーはニュースのURLを入力し、関連するニュース記事を取得できる。記事ページの例：https://www3.nhk.or.jp/news/html/20240509/k10014444461000.html'
+  },
+  {
+    id: 6,
+    title: '予定管理アプリ',
+    category: '2025年3月 - 2025年4月',
+    tech: ['React Native', 'Express', 'Supabase', 'OpenAI API'],
+    desc: 'chatGPTApiを活用した予定管理アプリ。ユーザーは自然言語で予定を入力し、アプリが自動的にカレンダーに追加。'
+  },
+  {
+    id: 7,
+    title: 'プログラミングクイズアプリ',
+    category: '2025年5月 - 2025年6月',
+    tech: ['Next.js', 'Express', 'docker', 'PostgreSQL', 'Redis', 'Socket.IO'],
+    desc: 'Next.jsとExpressを使用したプログラミングクイズアプリ。ユーザーは問題を解きながらプログラミングのスキルを向上させることができる。また、オンラインで対戦機能も実装されており、他のユーザーと競い合うことができる。frontはVercel、backはrenderにデプロイされている。'
+  },
+  {
+    id: 8,
+    title: 'シフト管理AIエージェント( 第2回 AI Agent Hackathon with Google Cloud 1次審査通過 )',
+    category: '2025年6月 - 2025年7月',
+    tech: ['Next.js', 'React', 'Firebase', 'Vertex AI', 'Gemini API', 'Cloud Run', 'LINE Messaging API', 'Python', 'TypeScript'],
+    desc: 'バイト先のチーム開発プロジェクトとして、LINEと連携したAIシフト調整エージェントを構築。Webでのシフト管理と、AIによるLINE上での不足枠調整を両立。FirebaseとNext.jsでWeb管理画面を構築し、Vertex AIと連携したチャットエージェントにより、対話形式でシフト表を調整可能にした。'
   }
 ];
 
@@ -412,7 +446,7 @@ const DetailModal = ({ isOpen, onClose, data }: any) => {
 
 export default function PortfolioImmersive() {
   const [activeSection, setActiveSection] = useState(0);
-  const [lang, setLang] = useState<Language>('en');
+  const [lang, setLang] = useState<Language>('ja');
   const [modalData, setModalData] = useState<any>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -456,8 +490,8 @@ export default function PortfolioImmersive() {
       <nav className="fixed top-0 w-full z-20 p-8 flex justify-between items-start pointer-events-none">
         <div className="pointer-events-auto">
           <div className="text-2xl font-black tracking-tighter flex flex-col">
-            <span className="text-white mix-blend-difference">KAZUKI</span>
-            <span className="text-cyan-400 text-sm tracking-[0.3em] font-light">TANAKA</span>
+            <span className="text-white mix-blend-difference">KUDOU</span>
+            <span className="text-cyan-400 text-sm tracking-[0.3em] font-light">KOUSEI</span>
           </div>
         </div>
         
@@ -507,7 +541,9 @@ export default function PortfolioImmersive() {
       {/* HERO CONTENT */}
       <div className={`fixed bottom-12 left-8 z-10 transition-all duration-1000 ${activeSection === 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20 pointer-events-none'}`}>
         <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500 mb-2">
-          IMMERSIVE
+          INNOVATIVE
+          <br />
+          PORTFOLIO
         </h1>
         <p className="text-cyan-400 font-mono text-sm tracking-widest mb-8 flex items-center gap-2">
           <Terminal size={14} /> {t.role.toUpperCase()}
@@ -558,9 +594,9 @@ export default function PortfolioImmersive() {
       {/* CONTACT (Centered Bottom) */}
       <div className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-center transition-all duration-700 ${activeSection === 3 ? 'opacity-100 scale-100' : 'opacity-0 scale-90 pointer-events-none'}`}>
         <div className="bg-black/20 backdrop-blur-xl p-12 rounded-full border border-white/5 hover:border-cyan-500/30 transition-all group">
-          <a href="mailto:hello@example.com" className="block">
-            <h2 className="text-4xl md:text-6xl font-black mb-2 group-hover:text-cyan-400 transition-colors">HELLO@</h2>
-            <p className="text-xl text-gray-400">Let's create something real.</p>
+          <a href="mailto:e1922022@oit.ac.jp" className="block">
+            <h2 className="text-4xl md:text-6xl font-black mb-2 group-hover:text-cyan-400 transition-colors">CONTACT ME</h2>
+            <p className="text-xl text-gray-400">e1922022@oit.ac.jp / Osaka, Japan</p>
           </a>
         </div>
       </div>
@@ -586,3 +622,8 @@ export default function PortfolioImmersive() {
     </div>
   );
 }
+
+
+
+
+
