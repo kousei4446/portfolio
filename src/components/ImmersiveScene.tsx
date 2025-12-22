@@ -4,9 +4,10 @@ import * as THREE from 'three';
 type ImmersiveSceneProps = {
   sectionIndex: number;
   onObjectClick: () => void;
+  clickTitle: string;
 };
 
-const ImmersiveScene = ({ sectionIndex, onObjectClick }: ImmersiveSceneProps) => {
+const ImmersiveScene = ({ sectionIndex, onObjectClick, clickTitle }: ImmersiveSceneProps) => {
   const mountRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
@@ -214,7 +215,7 @@ const ImmersiveScene = ({ sectionIndex, onObjectClick }: ImmersiveSceneProps) =>
 
       // --- Morphing Logic ---
       // We interpolate current positions towards the target shape (based on sectionIndex)
-      const targetShape = shapes[sectionIndexRef.current];
+      const targetShape = shapes[sectionIndexRef.current % shapes.length];
       const positionsAttr = particles.geometry.attributes.position;
       const currentPos = positionsAttr.array as Float32Array;
 
@@ -288,7 +289,7 @@ const ImmersiveScene = ({ sectionIndex, onObjectClick }: ImmersiveSceneProps) =>
   }, []);
 
   return (
-    <div ref={mountRef} className="absolute inset-0 z-0 cursor-pointer" title="Click to interact" />
+    <div ref={mountRef} className="absolute inset-0 z-0 cursor-pointer" title={clickTitle} />
   );
 };
 
