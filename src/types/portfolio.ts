@@ -58,6 +58,7 @@ export type InternExperience = {
   period: Record<Language, string>;
   summary: Record<Language, string>;
   tech: string[];
+  url?: string;
 };
 
 export type ArticlePlatform = 'Zenn' | 'Qiita' | 'Youtube' | 'GitHub' | 'Official' | 'Canva';

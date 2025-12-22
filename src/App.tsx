@@ -104,7 +104,7 @@ export default function PortfolioImmersive() {
       <ImmersiveScene sectionIndex={activeSection} onObjectClick={handleObjectClick} clickTitle={t.hero.interact} />
 
       {/* 2. Top Navigation (Minimal) */}
-      <nav className="fixed top-0 w-full z-20 p-8 flex justify-between items-start pointer-events-none">
+      <nav className="fixed top-0 w-full z-30 p-8 flex justify-between items-start pointer-events-none">
         <div className="pointer-events-auto">
           <div className="text-2xl font-black tracking-tighter flex flex-col">
             <span className="text-white mix-blend-difference">KUDOU</span>
@@ -128,8 +128,11 @@ export default function PortfolioImmersive() {
       </nav>
 
       {/* Menu Overlay */}
-      <div className={`fixed inset-0 bg-black/90 z-40 flex items-center justify-center transition-opacity duration-500 ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-        <div className="flex flex-col gap-8 text-center">
+      <div
+        className={`fixed inset-0 bg-black/90 z-40 flex items-center justify-center transition-opacity duration-500 ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        onClick={() => setIsMenuOpen(false)}
+      >
+        <div className="flex flex-col gap-8 text-center" onClick={(e) => e.stopPropagation()}>
           {SECTIONS.map((sec, idx) => (
             <button
               key={sec}
@@ -174,20 +177,24 @@ export default function PortfolioImmersive() {
       {/* ABOUT PANEL (Floating) */}
       <FloatingPanel
         position="center-right"
-        className={`max-w-md w-[calc(100vw-2rem)] md:w-auto ${activeSection === 1 ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0 pointer-events-none'}`}
+        className={`max-w-md md:max-w-3xl w-[calc(100vw-2rem)] md:w-auto ${activeSection === 1 ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0 pointer-events-none'}`}
       >
-        <div className="mb-5 overflow-hidden rounded-2xl border border-white/10 bg-black/40">
-          <img
-            src="/me.png"
-            alt="About me"
-            className="h-40 md:h-56 w-full object-contain bg-black/40"
-            loading="lazy"
-          />
+        <div className="md:flex md:items-start md:gap-6">
+          <div className="mb-5 md:mb-0 md:w-1/2 overflow-hidden rounded-2xl border border-white/10 bg-black/40">
+            <img
+              src="/me.png"
+              alt="About me"
+              className="h-40 md:h-72 w-full object-contain bg-black/40"
+              loading="lazy"
+            />
+          </div>
+          <div className="md:w-1/2">
+            <h2 className="text-3xl font-bold mb-4 border-b border-white/10 pb-4">{t.about.title}</h2>
+            <p className="max-h-[42vh] md:max-h-[60vh] overflow-y-auto pr-2 text-base md:text-lg leading-relaxed text-gray-300 scrollbar-hide">
+              {t.about.desc}
+            </p>
+          </div>
         </div>
-        <h2 className="text-3xl font-bold mb-4 border-b border-white/10 pb-4">{t.about.title}</h2>
-        <p className="max-h-[42vh] overflow-y-auto pr-2 text-base md:text-lg leading-relaxed text-gray-300 scrollbar-hide">
-          {t.about.desc}
-        </p>
         <div className="mt-6 flex gap-4">
           <a href="https://github.com/kousei4446/" target="_blank" rel="noopener noreferrer">
             <Github className="text-gray-400 hover:text-white cursor-pointer transition-colors" />
@@ -331,26 +338,46 @@ export default function PortfolioImmersive() {
             </div>
 
             <div ref={internshipsScrollRef} className="h-[66vh] md:h-[62vh] overflow-y-auto pr-2 scrollbar-hide space-y-6">
-              {internExperiences.map((intern) => (
-                <div key={intern.id} className="relative overflow-hidden rounded-3xl border border-emerald-400/30 bg-gradient-to-br from-emerald-500/10 via-black/40 to-cyan-500/10 p-6 shadow-[0_0_40px_rgba(16,185,129,0.2)]">
-                <div className="absolute -right-8 -top-8 h-20 w-20 rounded-full bg-emerald-400/20 blur-2xl" aria-hidden />
-                <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
-                  <div>
-                    <h3 className="text-xl md:text-2xl font-bold text-white">{intern.company[lang]}</h3>
-                    <p className="text-xs font-mono text-gray-400 uppercase tracking-widest">{intern.period[lang]}</p>
+              {internExperiences.map((intern) => {
+                const Card = (
+                  <>
+                    <div className="absolute -right-8 -top-8 h-20 w-20 rounded-full bg-emerald-400/20 blur-2xl" aria-hidden />
+                    <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
+                      <div>
+                        <h3 className="text-xl md:text-2xl font-bold text-white">{intern.company[lang]}</h3>
+                        <p className="text-xs font-mono text-gray-400 uppercase tracking-widest">{intern.period[lang]}</p>
+                      </div>
+                    </div>
+                    <p className="text-gray-300 leading-relaxed mb-4">{intern.summary[lang]}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {intern.tech.map((tch) => (
+                        <span key={tch} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-emerald-200">
+                          {tch}
+                        </span>
+                      ))}
+                    </div>
+                  </>
+                );
+
+                const className = 'relative overflow-hidden rounded-3xl border border-emerald-400/40 bg-gradient-to-br from-emerald-500/20 via-black/70 to-cyan-500/20 p-6 shadow-[0_0_40px_rgba(16,185,129,0.25)] transition-transform hover:-translate-y-1';
+
+                return intern.url ? (
+                  <a
+                    key={intern.id}
+                    href={intern.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={className}
+                  >
+                    {Card}
+                  </a>
+                ) : (
+                  <div key={intern.id} className={className}>
+                    {Card}
                   </div>
-                </div>
-                <p className="text-gray-300 leading-relaxed mb-4">{intern.summary[lang]}</p>
-                <div className="flex flex-wrap gap-2">
-                  {intern.tech.map((tch) => (
-                    <span key={tch} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-emerald-200">
-                      {tch}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+                );
+              })}
+            </div>
         </div>
       </div>
 

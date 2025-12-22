@@ -7,6 +7,7 @@ export const internExperiences: InternExperience[] = [
       ja: '株式会社クイック',
       en: 'Quick Co., Ltd.',
     },
+    url: 'https://paiza.jp/student/job_offers/33245',
     period: {
       ja: '2024年8月2日 ~ 2024年8月4日 (3Days)',
       en: 'Aug 2, 2024 - Aug 4, 2024 (3 days)',
@@ -23,6 +24,7 @@ export const internExperiences: InternExperience[] = [
       ja: '株式会社Sky',
       en: 'Sky Co., Ltd.',
     },
+    url: 'https://www.skygroup.jp/corporate-blog/article/1252/',
     period: {
       ja: '2024年9月2日 ~ 9月13日',
       en: 'Sep 2, 2024 - Sep 13, 2024',
@@ -39,6 +41,7 @@ export const internExperiences: InternExperience[] = [
       ja: '株式会社ジーニー',
       en: 'Geniee, Inc.',
     },
+    url: 'https://geniee.co.jp/recruit/',
     period: {
       ja: '2024年10月11日 (1Day)',
       en: 'Oct 11, 2024 (1 day)',
@@ -55,6 +58,7 @@ export const internExperiences: InternExperience[] = [
         ja: 'c-live株式会社',
         en: 'c-live Co., Ltd.',
     },
+    url: 'https://www2.c-live.jp/services_products/services_products_000657.html',
     period: {
         ja: '2025年3月 - 2025年11月(9カ月)',
         en: 'Mar 2025 - Nov 2025 (9 months)',
@@ -71,6 +75,7 @@ export const internExperiences: InternExperience[] = [
         ja: 'LINEヤフー株式会社',
         en: 'LY Corporation',
     },
+    url: 'https://www.lycorp.co.jp/ja/recruit/newgrads/internship/detail/SWE-6-59/',
     period: {
         ja: '2025年8月 - 2025年9月(1ヶ月)',
         en: 'Aug 2025 - Sep 2025 (1 month)',
@@ -87,6 +92,7 @@ export const internExperiences: InternExperience[] = [
         ja: 'PRTIMES株式会社',
         en: 'PRTIMES Corporation',
     },
+    url: 'https://prtimes.co.jp/recruit/',
     period: {
         ja: '2025年11月 - 現在',
         en: 'Nov 2025 - Present',
