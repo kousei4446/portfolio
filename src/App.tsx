@@ -359,7 +359,7 @@ export default function PortfolioImmersive() {
                   </>
                 );
 
-                const className = 'relative overflow-hidden rounded-3xl border border-emerald-400/40 bg-gradient-to-br from-emerald-500/20 via-black/70 to-cyan-500/20 p-6 shadow-[0_0_40px_rgba(16,185,129,0.25)] transition-transform hover:-translate-y-1';
+                const className = 'relative block w-full overflow-hidden rounded-3xl border border-emerald-400/40 bg-gradient-to-br from-emerald-500/20 via-black/70 to-cyan-500/20 p-6 shadow-[0_0_40px_rgba(16,185,129,0.25)] transition-transform hover:-translate-y-1';
 
                 return intern.url ? (
                   <a
