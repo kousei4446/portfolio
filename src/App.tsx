@@ -21,6 +21,7 @@ export default function PortfolioImmersive() {
   const projectsScrollRef = useRef<HTMLDivElement>(null);
   const internshipsScrollRef = useRef<HTMLDivElement>(null);
   const scrollTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const touchStartY = useRef<number | null>(null);
 
   // Wheel event for snap scrolling (Scroll Jacking)
   useEffect(() => {
@@ -43,15 +44,45 @@ export default function PortfolioImmersive() {
 
       if (e.deltaY > 50) {
         setActiveSection(prev => Math.min(prev + 1, SECTIONS.length - 1));
-        scrollTimeout.current = setTimeout(() => { scrollTimeout.current = null; }, 1000);
+        scrollTimeout.current = setTimeout(() => { scrollTimeout.current = null; }, 650);
       } else if (e.deltaY < -50) {
         setActiveSection(prev => Math.max(prev - 1, 0));
-        scrollTimeout.current = setTimeout(() => { scrollTimeout.current = null; }, 1000);
+        scrollTimeout.current = setTimeout(() => { scrollTimeout.current = null; }, 650);
       }
     };
 
+    const handleTouchStart = (e: TouchEvent) => {
+      if (modalData) return;
+      touchStartY.current = e.touches[0]?.clientY ?? null;
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (modalData) return;
+      const startY = touchStartY.current;
+      touchStartY.current = null;
+      if (startY === null) return;
+      if (scrollTimeout.current) return;
+
+      const endY = e.changedTouches[0]?.clientY ?? startY;
+      const deltaY = startY - endY;
+      if (Math.abs(deltaY) < 50) return;
+
+      if (deltaY > 0) {
+        setActiveSection(prev => Math.min(prev + 1, SECTIONS.length - 1));
+      } else {
+        setActiveSection(prev => Math.max(prev - 1, 0));
+      }
+      scrollTimeout.current = setTimeout(() => { scrollTimeout.current = null; }, 650);
+    };
+
     window.addEventListener('wheel', handleWheel);
-    return () => window.removeEventListener('wheel', handleWheel);
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd);
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
   }, [activeSection, modalData]);
 
   const t = translations[lang];
@@ -143,18 +174,18 @@ export default function PortfolioImmersive() {
       {/* ABOUT PANEL (Floating) */}
       <FloatingPanel
         position="center-right"
-        className={`max-w-md ${activeSection === 1 ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0 pointer-events-none'}`}
+        className={`max-w-md w-[calc(100vw-2rem)] md:w-auto ${activeSection === 1 ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0 pointer-events-none'}`}
       >
         <div className="mb-5 overflow-hidden rounded-2xl border border-white/10 bg-black/40">
           <img
             src="/me.png"
             alt="About me"
-            className="h-56 w-full object-contain bg-black/40"
+            className="h-40 md:h-56 w-full object-contain bg-black/40"
             loading="lazy"
           />
         </div>
         <h2 className="text-3xl font-bold mb-4 border-b border-white/10 pb-4">{t.about.title}</h2>
-        <p className="text-lg leading-relaxed text-gray-300">
+        <p className="max-h-[42vh] overflow-y-auto pr-2 text-base md:text-lg leading-relaxed text-gray-300 scrollbar-hide">
           {t.about.desc}
         </p>
         <div className="mt-6 flex gap-4">
@@ -168,29 +199,29 @@ export default function PortfolioImmersive() {
       </FloatingPanel>
 
       {/* PROJECTS LIST (Bold Vertical) */}
-      <div className={`fixed inset-x-0 top-20 bottom-16 z-20 transition-all duration-700 ${activeSection === 2 ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'}`}>
-        <div className="relative h-full px-8">
+      <div className={`fixed inset-x-0 top-20 md:top-20 bottom-2 md:bottom-16 z-20 transition-all duration-700 ${activeSection === 2 ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'}`}>
+        <div className="relative h-full px-4 md:px-8">
           <div className="absolute -top-20 -left-10 h-48 w-48 rounded-full bg-cyan-500/20 blur-3xl" aria-hidden />
           <div className="absolute -bottom-10 right-10 h-64 w-64 rounded-full bg-fuchsia-500/20 blur-3xl" aria-hidden />
 
-          <div className="flex items-end justify-between mb-6">
-            <div>
-              <p className="text-xs tracking-[0.4em] text-cyan-300 uppercase">Portfolio</p>
-              <h2 className="text-5xl md:text-7xl font-black tracking-tight text-white">PROJECTS</h2>
-              <p className="text-sm text-gray-300">{t.projects.desc}</p>
+            <div className="flex items-end justify-between mb-4 md:mb-6">
+              <div>
+                <p className="text-xs tracking-[0.4em] text-cyan-300 uppercase">Portfolio</p>
+                <h2 className="text-4xl md:text-7xl font-black tracking-tight text-white">PROJECTS</h2>
+                <p className="text-sm text-gray-300 max-w-xs md:max-w-none">{t.projects.desc}</p>
+              </div>
+              <span className="text-xs font-mono text-cyan-300/80 border border-cyan-400/40 px-3 py-1 rounded-full uppercase tracking-widest">
+                {t.sections.projects}
+              </span>
             </div>
-            <span className="text-xs font-mono text-cyan-300/80 border border-cyan-400/40 px-3 py-1 rounded-full uppercase tracking-widest">
-              {t.sections.projects}
-            </span>
-          </div>
 
-          <div ref={projectsScrollRef} className="h-[62vh] overflow-y-auto pr-2 scrollbar-hide space-y-10">
+            <div ref={projectsScrollRef} className="h-[66vh] md:h-[62vh] overflow-y-auto pr-2 scrollbar-hide space-y-10">
             <section className="space-y-4">
               <div className="flex items-center gap-3">
                 <span className="h-1 w-10 bg-cyan-400" />
                 <h3 className="text-lg font-semibold tracking-[0.2em] uppercase text-cyan-200">{t.projects.groupLabels.personal}</h3>
               </div>
-              <div className="grid gap-6 md:grid-cols-2">
+                <div className="grid gap-6 md:grid-cols-2">
                 {personalProjects.map((project) => (
                   <button
                     key={project.id}
@@ -212,7 +243,7 @@ export default function PortfolioImmersive() {
                         />
                       </div>
                     ) : null}
-                    <h4 className="text-2xl font-bold text-white mb-2 group-hover:text-cyan-200">{project.title[lang]}</h4>
+                      <h4 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-cyan-200">{project.title[lang]}</h4>
                     <p className="text-sm text-gray-300 line-clamp-3">{project.desc[lang]}</p>
                     {project.articles?.length ? (
                       <div className="mt-3 flex flex-wrap items-center gap-2 text-[10px] uppercase tracking-widest text-cyan-200/80">
@@ -237,7 +268,7 @@ export default function PortfolioImmersive() {
                 <span className="h-1 w-10 bg-fuchsia-400" />
                 <h3 className="text-lg font-semibold tracking-[0.2em] uppercase text-fuchsia-200">{t.projects.groupLabels.hackathon}</h3>
               </div>
-              <div className="grid gap-6 md:grid-cols-2">
+                <div className="grid gap-6 md:grid-cols-2">
                 {hackathonProjects.map((project) => (
                   <button
                     key={project.id}
@@ -259,7 +290,7 @@ export default function PortfolioImmersive() {
                         />
                       </div>
                     ) : null}
-                    <h4 className="text-2xl font-bold text-white mb-2 group-hover:text-fuchsia-200">{project.title[lang]}</h4>
+                      <h4 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-fuchsia-200">{project.title[lang]}</h4>
                     <p className="text-sm text-gray-300 line-clamp-3">{project.desc[lang]}</p>
                     {project.articles?.length ? (
                       <div className="mt-3 flex flex-wrap items-center gap-2 text-[10px] uppercase tracking-widest text-fuchsia-200/80">
@@ -283,29 +314,29 @@ export default function PortfolioImmersive() {
       </div>
 
       {/* INTERNSHIPS (Bold Vertical) */}
-      <div className={`fixed inset-x-0 top-20 bottom-16 z-20 transition-all duration-700 ${activeSection === 3 ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'}`}>
-        <div className="relative h-full px-8">
+      <div className={`fixed inset-x-0 top-20 md:top-20 bottom-2 md:bottom-16 z-20 transition-all duration-700 ${activeSection === 3 ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'}`}>
+        <div className="relative h-full px-4 md:px-8">
           <div className="absolute -top-20 right-10 h-56 w-56 rounded-full bg-emerald-400/20 blur-3xl" aria-hidden />
           <div className="absolute bottom-0 left-8 h-40 w-40 rounded-full bg-cyan-500/20 blur-3xl" aria-hidden />
 
-          <div className="flex items-end justify-between mb-6">
-            <div>
-              <p className="text-xs tracking-[0.4em] text-emerald-300 uppercase">Experience</p>
-              <h2 className="text-5xl md:text-7xl font-black tracking-tight text-white">INTERNSHIPS</h2>
-              <p className="text-sm text-gray-300">{t.internships.desc}</p>
+            <div className="flex items-end justify-between mb-4 md:mb-6">
+              <div>
+                <p className="text-xs tracking-[0.4em] text-emerald-300 uppercase">Experience</p>
+                <h2 className="text-4xl md:text-7xl font-black tracking-tight text-white">INTERNSHIPS</h2>
+                <p className="text-sm text-gray-300 max-w-xs md:max-w-none">{t.internships.desc}</p>
+              </div>
+              <span className="text-xs font-mono text-emerald-300/80 border border-emerald-400/40 px-3 py-1 rounded-full uppercase tracking-widest">
+                {t.sections.internships}
+              </span>
             </div>
-            <span className="text-xs font-mono text-emerald-300/80 border border-emerald-400/40 px-3 py-1 rounded-full uppercase tracking-widest">
-              {t.sections.internships}
-            </span>
-          </div>
 
-          <div ref={internshipsScrollRef} className="h-[62vh] overflow-y-auto pr-2 scrollbar-hide space-y-6">
-            {internExperiences.map((intern) => (
-              <div key={intern.id} className="relative overflow-hidden rounded-3xl border border-emerald-400/30 bg-gradient-to-br from-emerald-500/10 via-black/40 to-cyan-500/10 p-6 shadow-[0_0_40px_rgba(16,185,129,0.2)]">
+            <div ref={internshipsScrollRef} className="h-[66vh] md:h-[62vh] overflow-y-auto pr-2 scrollbar-hide space-y-6">
+              {internExperiences.map((intern) => (
+                <div key={intern.id} className="relative overflow-hidden rounded-3xl border border-emerald-400/30 bg-gradient-to-br from-emerald-500/10 via-black/40 to-cyan-500/10 p-6 shadow-[0_0_40px_rgba(16,185,129,0.2)]">
                 <div className="absolute -right-8 -top-8 h-20 w-20 rounded-full bg-emerald-400/20 blur-2xl" aria-hidden />
                 <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
                   <div>
-                    <h3 className="text-2xl font-bold text-white">{intern.company[lang]}</h3>
+                    <h3 className="text-xl md:text-2xl font-bold text-white">{intern.company[lang]}</h3>
                     <p className="text-xs font-mono text-gray-400 uppercase tracking-widest">{intern.period[lang]}</p>
                   </div>
                 </div>
@@ -325,13 +356,13 @@ export default function PortfolioImmersive() {
 
       {/* CONTACT (Centered Bottom) */}
       <div className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-center transition-all duration-700 ${activeSection === 4 ? 'opacity-100 scale-100' : 'opacity-0 scale-90 pointer-events-none'}`}>
-        <div className="relative overflow-hidden bg-gradient-to-br from-sky-500/10 via-black/40 to-amber-500/10 p-12 rounded-3xl border border-sky-400/30 hover:border-amber-400/40 shadow-[0_0_40px_rgba(56,189,248,0.2)] transition-all group">
+        <div className="relative w-[calc(100vw-2rem)] max-w-xl overflow-hidden bg-gradient-to-br from-sky-500/10 via-black/40 to-amber-500/10 p-6 md:p-12 rounded-3xl border border-sky-400/30 hover:border-amber-400/40 shadow-[0_0_40px_rgba(56,189,248,0.2)] transition-all group">
           <div className="absolute -top-10 right-6 h-24 w-24 rounded-full bg-sky-400/20 blur-2xl" aria-hidden />
           <div className="mb-6 flex justify-center">
             <img
               src="/aboutMe.png"
               alt="About me"
-              className="h-48 w-64 object-cover rounded-2xl border border-white/10"
+              className="h-40 md:h-48 w-56 md:w-64 object-contain rounded-2xl border border-white/10 bg-black/40"
               loading="lazy"
             />
           </div>
