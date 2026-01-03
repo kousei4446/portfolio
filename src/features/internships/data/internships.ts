@@ -1,4 +1,4 @@
-﻿import type { InternExperience } from '../types/portfolio';
+﻿import type { InternExperience } from '../../../shared/types/portfolio';
 
 export const internExperiences: InternExperience[] = [
   {
