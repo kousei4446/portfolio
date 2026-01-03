@@ -6,7 +6,7 @@ type InternshipsSectionProps = {
   internships: InternExperience[];
   lang: Language;
   t: TranslationContent;
-  scrollRef: RefObject<HTMLDivElement>;
+  scrollRef: RefObject<HTMLDivElement | null>;
 };
 
 export default function InternshipsSection({

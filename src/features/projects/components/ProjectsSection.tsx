@@ -8,7 +8,7 @@ type ProjectsSectionProps = {
   lang: Language;
   t: TranslationContent;
   onSelectProject: (project: Project) => void;
-  scrollRef: RefObject<HTMLDivElement>;
+  scrollRef: RefObject<HTMLDivElement | null>;
 };
 
 export default function ProjectsSection({
