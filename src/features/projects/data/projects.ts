@@ -207,4 +207,24 @@ export const projectsData: Project[] = [
     ],
     githubUrl: 'https://github.com/jphacks/os_2521',
   },
+  {
+    id: 10,
+    group: 'personal',
+    title: {
+      ja: '見積書PDF作成アプリ',
+      en: '',
+    },
+    category: {
+      ja: '2026年1月',
+      en: '',
+    },
+    image: '/work9.png',
+    tech: ['Express', 'TypeScript', 'Render'],
+    desc: {
+      ja: '弟のフリーランス活動を支援するために開発した、見積書PDF作成アプリ。ユーザーは必要な情報を入力するだけで、プロフェッショナルな見積書を自動生成できる。時間と労力を大幅に削減し、ビジネスの効率化に貢献。',
+      en: 'An estimate PDF creation app developed to support my younger brother\'s freelance work. Users can automatically generate professional estimates by simply entering the required information, significantly reducing time and effort while enhancing business efficiency.',
+    },
+    url: 'https://estimate-pdf-app.onrender.com/',
+    githubUrl: 'https://github.com/kousei4446/estimate-pdf-app/tree/main',
+  },
 ];
