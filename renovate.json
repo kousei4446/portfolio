@@ -1,0 +1,33 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "group:allNonMajor",
+    "config:best-practices"
+  ],
+  "minimumReleaseAge": "14 days",
+  "enabledManagers": ["npm", "github-actions"],
+  "baseBranchPatterns": ["release-renovate"],
+  "draftPR": true,
+  "timezone": "Asia/Tokyo",
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/vendor/**",
+    "**/examples/**",
+    "**/__fixtures__/**"
+  ],
+  "rebaseWhen": "conflicted",
+  "github-actions": {
+    "managerFilePatterns": [
+      "/^(workflow-templates|\\.(?:github|gitea|forgejo)/workflows)/[^/]+\\.ya?ml$/",
+      "/(^|/)action\\.ya?ml$/",
+      "/\\.github/actions/.+\\.ya?ml$/"
+    ]
+  },
+  "packageRules": [
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github-actions"
+    }
+  ]
+}
