@@ -27,7 +27,7 @@
     "tsparticles-engine": "^2.12.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.21.0",
+    "@eslint/js": "^9.24.0",
     "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^22.19.3",
     "@types/react": "19.0.12",
@@ -35,7 +35,7 @@
     "@types/three": "^0.182.0",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.23",
-    "eslint": "^9.21.0",
+    "eslint": "^9.24.0",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
